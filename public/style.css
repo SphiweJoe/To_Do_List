@@ -100,4 +100,46 @@ body, html {
     box-sizing: border-box; /* Include padding in width calculation */
   }
   
+  /* Calender cust*/
+  #calendar {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+  }
+
+  .calendar-day {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .calendar-day:hover {
+    background-color: #f0f0f0;
+  }
+
+  .calendar-day.selected {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  #date-input {
+    padding: 10px;
+    font-size: 16px;
+  }
   
