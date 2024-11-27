@@ -9,47 +9,71 @@
 <body>
 
     <div class="container">
-        <div class="row">
-          <div class="column">
-            Category:
-            <input type="text" id="customTextbox" placeholder="Enter task name here..." />
-            Task Name:
-            <input type="text" id="customTextbox" placeholder="Enter task name here..." />
-            Completion Date:
-            <input type="text" id="date-input" placeholder="Click to select date" readonly>
-            <div id="calendar">
-                <!-- adjust/edit-->
-              <div class="calendar-header">
-                <button id="prev-month">&lt;</button>
-                <span id="month-year"></span>
-                <button id="next-month">&gt;</button>
-              </div>
-              <div class="calendar-days" id="calendar-days">
-                <!-- Days will be populated dynamically -->
-              </div>
-            </div>
+        <!-- Display today's date -->
+        <div class="date-header">
+            <span id="today-date"></span>
+        </div>
 
-            <input type="text" id="customTextbox" placeholder="Enter task name here..." />
-            
-        </div>
-         
-        
-        </div>
-        <div class="row">
-          <div class="column">
-            <textarea id="customTextarea" placeholder="Type your task description here..."></textarea>
-            <button class="btn_create">Create Task</button>
-        </div>
-       
-         
-        </div>
         <div class="row">
             <div class="column">
-                <h3>display task</h3>
+                <label for="category">Category:</label>
+                <input type="text" id="category" placeholder="Enter category here..." />
             </div>
-           
-          </div>
-      </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="task-name">Task Name:</label>
+                <input type="text" id="task-name" placeholder="Enter task name here..." />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="completion-date">Completion Date:</label>
+                <input type="text" id="completion-date" placeholder="Click to select date" readonly />
+                <div id="calendar">
+                    <div class="calendar-header">
+                        <button id="prev-month">&lt;</button>
+                        <span id="month-year"></span>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                    <div class="calendar-days" id="calendar-days">
+                        <!-- Days will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="task-description">Description:</label>
+                <textarea id="task-description" placeholder="Type your task description here..."></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <button class="btn_create">Create Task</button>
+                <button class="btn_view">View Tasks</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/calender.js"></script>
+    <script src="/public/script.js"></script>
+
+    <!-- Add JavaScript for Today's Date 
+    <script>
+      // Get today's date and format it
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const todayString = today.toLocaleDateString('en-US', options);
+
+      // Display today's date in the #today-date element
+      document.getElementById('today-date').innerText = todayString;
+    </script> 
+    -->
 
 </body>
 </html>
