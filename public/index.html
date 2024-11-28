@@ -1,79 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sphiwe To-Do</title>
-  <link rel="stylesheet" href="/public/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="container">
-        <!-- Display today's date -->
-        <div class="date-header">
-            <span id="today-date"></span>
-        </div>
+<div class="container">
+    <header>
+        <h1>Sphiwe's To-Do List</h1>
+        <div class="date-time" id="datetime"></div>
+    </header>
 
-        <div class="row">
-            <div class="column">
-                <label for="category">Category:</label>
-                <input type="text" id="category" placeholder="Enter category here..." />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="column">
-                <label for="task-name">Task Name:</label>
-                <input type="text" id="task-name" placeholder="Enter task name here..." />
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="column">
-                <label for="completion-date">Completion Date:</label>
-                <input type="text" id="completion-date" placeholder="Click to select date" readonly />
-                <div id="calendar">
-                    <div class="calendar-header">
-                        <button id="prev-month">&lt;</button>
-                        <span id="month-year"></span>
-                        <button id="next-month">&gt;</button>
-                    </div>
-                    <div class="calendar-days" id="calendar-days">
-                        <!-- Days will be populated dynamically -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="column">
-                <label for="task-description">Description:</label>
-                <textarea id="task-description" placeholder="Type your task description here..."></textarea>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="column">
-                <button class="btn_create">Create Task</button>
-                <button class="btn_view">View Tasks</button>
-            </div>
-        </div>
+    <div class="task-input-container">
+        <input type="text" id="taskInput" placeholder="Enter a new task">
+        <select id="taskCategory">
+            <option value="">Select Category</option>
+            <option value="Sport">Sport</option>
+            <option value="Learning">Learning</option>
+            <option value="Travel">Travel</option>
+            <option value="Work">Sport</option>
+            <option value="Entertainment">Entertainment</option>
+        </select>
+        <input type="date" id="completionDate">
+        <button class="add-task" onclick="addTask()">Add Task</button>
     </div>
 
-    <script src="/public/calender.js"></script>
-    <script src="/public/script.js"></script>
+    <ul class="task-list" id="taskList"></ul>
+</div>
 
-    <!-- Add JavaScript for Today's Date 
-    <script>
-      // Get today's date and format it
-      const today = new Date();
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      const todayString = today.toLocaleDateString('en-US', options);
-
-      // Display today's date in the #today-date element
-      document.getElementById('today-date').innerText = todayString;
-    </script> 
-    -->
+<script src="script.js"></script>
 
 </body>
 </html>
