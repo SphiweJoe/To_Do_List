@@ -8,45 +8,21 @@ Welcome to my personal to-do list! This is an application that allows me to crea
 
 ## 📅 **Code utilised for the project:**
 
-- [x] **Back-end: ** 📄
-- [ ] **Database: ** 💼
-- [ ] **Responsive design: ** ✉️
-- [x] **User Interface: ** 🖥️
+- [x] **Back-end: Uses Node js and JavaScript** 📄
+- [ ] **Database: Uses MongoDB** 💼
+- [ ] **Responsive design: JavaScript and CSS** ✉️
+- [x] **User Interface: HTML and CSS** 🖥️
 
 ---
 
 ## 🔜 **Task Categories:**
 
 ### 🛠️ **Work-Related:**
-- [ ] **Review pull requests** 🧑‍💻
-- [ ] **Plan next sprint** 📈
-- [ ] **Bug fixing** 🐞
-
 ### 📚 **Personal:**
-- [ ] **Read a book chapter** 📖
-- [ ] **Go for a walk in the park** 🌳
-- [ ] **Grocery shopping** 🛒
-
----
-
-## 💡 **Ideas & Improvements:**
-- [ ] **Set up automated daily backups** ⏳
-- [ ] **Organize workspace** 🧹
-- [ ] **Start learning a new programming language** 🖥️
-
----
-
-## 🏆 **Completed:**
-- [x] **Plan weekly schedule** 📅
-- [x] **Clean email inbox** 📬
-- [x] **Exercise for 30 minutes** 🏋️‍♂️
-
----
-
-## 📌 **Notes:**
-- Don’t forget to take breaks regularly! 🧘‍♀️
-- Set realistic goals for the week. 🎯
-- Stay hydrated and get enough rest! 💧😴
+### 💡 **Learning:**
+### 🏆 **Sports:**
+### 📌 **Travel:**
+### 🧘‍♀️ **Entertainment**
 
 ---
 
