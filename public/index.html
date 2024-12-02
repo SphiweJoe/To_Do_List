@@ -3,38 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Sphiwe's To-Do List</title>
-    <link rel="stylesheet" href="/public/style.css">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="container">
-    <header>
-        <img src="/public/IMG_1997.jpg" alt="Profile Photo" class="profile-photo">
-        <h1>Sphiwe's To-Do List</h1>
-        <div class="date-time" id="datetime"></div>
-    </header>
-
-    <div class="task-input-container">
-        <input type="text" id="taskInput" placeholder="Enter a new task" required>
-        <select id="taskCategory" required>
-            <option value="">Select Category</option>
-            <option value="Sport">Sport</option>
-            <option value="Learning">Learning</option>
-            <option value="Travel">Travel</option>
-            <option value="Work">Work-Related</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Personal">Personal</option>
-        </select>
-        <input type="date" id="completionDate" required>
-        <button class="add-task" onclick="addTask()">Add Task</button>
+    <div class="container">
+        <img class="profile-img" src="./IMG_1997.jpg" alt="Profile Picture">
+        <div class="login-box">
+            <div class="login-name">
+                <div id="datetime" style="text-align: center; font-size: 18px; color: white;"></div>
+                <h1>Sphiwe's To-Do List</h1>
+                <div class="underline-name"></div>
+            </div>
+            <form onsubmit="addTask(event)">
+                <div class="input-group">
+                    <label for="taskInput">Task:</label>
+                    <input type="text" id="taskInput" placeholder="Enter a new task" required>
+                </div>
+                <div class="input-group">
+                    <label for="taskCategory">Category:</label>
+                    <select id="taskCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Sport">Sport</option>
+                        <option value="Learning">Learning</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Work">Work-Related</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Personal">Personal</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="completionDate">Due Date:</label>
+                    <input type="date" id="completionDate" required>
+                </div>
+                <div class="submit-button">
+                    <input type="submit" value="Add Task">
+                </div>
+            </form>
+            <ul class="task-list" id="taskList"></ul>
+        </div>
     </div>
-
-    <ul class="task-list" id="taskList"></ul>
-</div>
-
-<script src="/public/script_main.js"></script>
-
+    <script src="./script_main.js"></script>
 </body>
 </html>

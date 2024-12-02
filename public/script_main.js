@@ -1,16 +1,12 @@
 // Function to add a task
-function addTask() {
+function addTask(event) {
+    event.preventDefault();
     const taskText = document.getElementById('taskInput').value.trim();
     const taskCategory = document.getElementById('taskCategory').value;
     const completionDate = document.getElementById('completionDate').value;
 
     if (!taskText || !taskCategory || !completionDate) {
         alert("Please fill in all fields before adding the task.");
-        return;
-    }
-
-    if (taskCategory.length > 40) {
-        alert("Task category must be less than 40 characters.");
         return;
     }
 
@@ -25,16 +21,13 @@ function addTask() {
     const li = document.createElement('li');
     li.classList.add('task-item');
     li.innerHTML = `
-        <span class="task-text">${newTask.text}</span>
-        <span class="task-category">
-            <span class="task-category-icons ${newTask.category.toLowerCase()}"></span>
-            ${newTask.category}
-        </span>
-        <span class="task-date">${newTask.date}</span>
+        <div class="task-category"><strong>${newTask.category}</strong></div>
+        <div class="task-text">${newTask.text}</div>
+        <div class="task-date">${formatDate(newTask.date)}</div>
         <div class="task-actions">
-            <button class="task-completed" onclick="toggleTask(this)">Task Completed</button>
-            <button class="task-edit" onclick="editTask(this)">Edit Task</button>
-            <button class="task-delete" onclick="deleteTask(this)">Delete Task</button>
+            <button class="task-completed" onclick="toggleTask(this)">Completed</button>
+            <button class="task-edit" onclick="editTask(this)">Edit</button>
+            <button class="task-delete" onclick="deleteTask(this)">Delete</button>
         </div>
     `;
     taskList.appendChild(li);
@@ -47,24 +40,20 @@ function addTask() {
 
 // Function to toggle task completion
 function toggleTask(button) {
-    const li = button.parentElement.parentElement;
-    const taskText = li.querySelector('.task-text').innerText;
-    const completed = li.classList.contains('complete');
-
-    // Toggle completion status
-    li.classList.toggle('complete', !completed);
+    const li = button.closest('li'); // More robust way to get parent <li>
+    li.classList.toggle('complete');
 }
 
 // Function to edit a task
 function editTask(button) {
-    const li = button.parentElement.parentElement;
+    const li = button.closest('li'); // More robust way to get parent <li>
     const taskText = li.querySelector('.task-text').innerText;
     const taskCategory = li.querySelector('.task-category').innerText.trim();
     const taskDate = li.querySelector('.task-date').innerText;
 
     // Populate the input fields with existing values
-    document.getElementById('taskInput').value = taskText;
     document.getElementById('taskCategory').value = taskCategory;
+    document.getElementById('taskInput').value = taskText;
     document.getElementById('completionDate').value = taskDate;
 
     // Remove the task from the list (so user can add the edited task)
@@ -76,7 +65,7 @@ function editTask(button) {
 
 // Function to delete a task
 function deleteTask(button) {
-    const li = button.parentElement.parentElement;
+    const li = button.closest('li'); // More robust way to get parent <li>
     li.remove();
 }
 
@@ -89,3 +78,35 @@ function setMinDateForCalendar() {
 
 // Call the function to set the min date on page load
 setMinDateForCalendar();
+
+// Display current date and time in the header
+function updateDateTime() {
+    const dateTime = new Date();
+    const formattedDate = dateTime.toLocaleString('en-GB', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+    });
+
+    document.getElementById('datetime').textContent = formattedDate;
+}
+
+// Update date and time every second
+setInterval(updateDateTime, 1000);
+
+// Function to format the date into a more user-friendly format
+function formatDate(dateString) {
+    const date = new Date(dateString);
+
+    // If the date is invalid, return an empty string
+    if (isNaN(date)) {
+        return "Invalid date";
+    }
+
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return date.toLocaleDateString('en-GB', options);
+}
