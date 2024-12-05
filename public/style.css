@@ -22,6 +22,10 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 100%;
+  height: auto; /* Allow height to adjust based on content */
+  overflow: hidden; /* Prevent overflow */
 }
 
 .profile-img {
@@ -35,7 +39,7 @@ body {
 
 .current-date-time {
   font-size: 18px;
-  color: #007bff;
+  color: #9aa0a7;
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
@@ -102,17 +106,60 @@ body {
   background-color: #0056b3;
 }
 
+/* Category section styling */
+.task-category-section {
+  width: 100%;
+  padding: 10px;
+}
+
+.task-category-section {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .task-list {
   list-style: none;
   padding: 0;
   margin-top: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
 }
 
 .task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #f9f9f9;
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.task-item .task-content {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-item .task-text {
+  flex-grow: 1;
+  padding-right: 20px; /* space between text and date */
+}
+
+.task-item .task-date {
+  margin-left: 20px;
+  color: #666;
+}
+
+.task-item .task-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,12 +172,25 @@ body {
   padding: 6px 12px;
   cursor: pointer;
   border-radius: 4px;
-  margin-left: 10px;
-  transition: background-color 0.3s;
+  margin-left: 5 px;
+  transition: background-color 0.3s ease;
 }
 
+/* Hover effects for task actions */
 .task-item .task-actions button:hover {
   background-color: #0056b3;
+}
+
+.task-item .task-actions .task-completed:hover {
+  background-color: green; /* Green for task completed button */
+}
+
+.task-item .task-actions .task-delete:hover {
+  background-color: red; /* Red for delete button */
+}
+
+.task-item .task-actions .task-edit:hover {
+  background-color: rgb(247, 243, 21); /* Yellow for edit button */
 }
 
 .task-item.complete {
@@ -149,12 +209,4 @@ body {
 
 .task-date {
   margin-left: 10px;
-}
-
-.task-list {
-  list-style: none;
-  padding: 0;
-  margin-top: 20px;
-  max-height: 300px;
-  overflow-y: auto;
 }

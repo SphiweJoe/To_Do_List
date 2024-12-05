@@ -18,25 +18,48 @@ function addTask(event) {
     };
 
     const taskList = document.getElementById('taskList');
+
+    // Check if a section for this category already exists
+    let categorySection = document.getElementById(`category-${taskCategory}`);
+
+    // If not, create a new section for this category
+    if (!categorySection) {
+        categorySection = document.createElement('section');
+        categorySection.id = `category-${taskCategory}`;
+        categorySection.classList.add('task-category-section');
+        const categoryTitle = document.createElement('h2');
+        categoryTitle.textContent = taskCategory;
+        categorySection.appendChild(categoryTitle);
+        taskList.appendChild(categorySection);
+    }
+
+    // Create the task item
     const li = document.createElement('li');
     li.classList.add('task-item');
     li.innerHTML = `
-        <div class="task-category"><strong>${newTask.category}</strong></div>
-        <div class="task-text">${newTask.text}</div>
-        <div class="task-date">${formatDate(newTask.date)}</div>
+        <div class="task-content">
+            <div class="task-text">${newTask.text}</div>
+            <div class="task-date">${formatDate(newTask.date)}</div>
+        </div>
         <div class="task-actions">
             <button class="task-completed" onclick="toggleTask(this)">Completed</button>
             <button class="task-edit" onclick="editTask(this)">Edit</button>
             <button class="task-delete" onclick="deleteTask(this)">Delete</button>
         </div>
     `;
-    taskList.appendChild(li);
+
+    // Append the task to the respective category section
+    categorySection.appendChild(li);
+
+    // Scroll to the new task to ensure it is visible after adding
+    li.scrollIntoView({ behavior: "smooth", block: "end" });
 
     // Clear inputs
     document.getElementById('taskInput').value = '';
     document.getElementById('taskCategory').value = '';
     document.getElementById('completionDate').value = '';
 }
+
 
 // Function to toggle task completion
 function toggleTask(button) {
@@ -116,13 +139,13 @@ document.getElementById('taskInput').addEventListener('input', function() {
     const taskText = this.value;
     const charCountMessage = document.getElementById('charCountMessage');
     
-    if (taskText.length > 80) {
+    if (taskText.length > 100) {
         // Display message when the character limit is exceeded
         if (!charCountMessage) {
             const message = document.createElement('div');
             message.id = 'charCountMessage';
             message.style.color = 'red';
-            message.textContent = "Task name cannot exceed 20 characters.";
+            message.textContent = "Task name cannot exceed 100 characters.";
             document.getElementById('taskInput').parentElement.appendChild(message);
         }
     } else {
