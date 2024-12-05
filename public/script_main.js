@@ -92,7 +92,7 @@ function updateDateTime() {
         second: '2-digit',
     });
 
-    document.getElementById('datetime').textContent = formattedDate;
+    document.getElementById('currentDateTime').textContent = formattedDate;
 }
 
 // Update date and time every second
@@ -110,3 +110,25 @@ function formatDate(dateString) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return date.toLocaleDateString('en-GB', options);
 }
+
+// Validate task input length while user is typing (max 80 characters)
+document.getElementById('taskInput').addEventListener('input', function() {
+    const taskText = this.value;
+    const charCountMessage = document.getElementById('charCountMessage');
+    
+    if (taskText.length > 80) {
+        // Display message when the character limit is exceeded
+        if (!charCountMessage) {
+            const message = document.createElement('div');
+            message.id = 'charCountMessage';
+            message.style.color = 'red';
+            message.textContent = "Task name cannot exceed 20 characters.";
+            document.getElementById('taskInput').parentElement.appendChild(message);
+        }
+    } else {
+        // Remove message if task name length is valid
+        if (charCountMessage) {
+            charCountMessage.remove();
+        }
+    }
+});
